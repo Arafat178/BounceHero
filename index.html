@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bounce Hero</title>
+  <!-- Linking external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="game-title">Bounce Hero</h1>
+
+
+   <!-- Player Input Screen -->
+  <div id="startScreen">
+    <h2>Enter Player Details</h2>
+    <input type="text" id="playerNameInput" placeholder="Enter your name"><br><h3>Upload your Image (optional) </h3>
+    <input type="file" id="playerImageInput" accept="image/*"><br><br>
+    <button id="startBtn">Start Game</button>
+  </div>
+  <!-- Game Display -->
+  <div id="gameDisplay">
+    <canvas id="gameBoard" width="450" height="500"></canvas>
+    <div id="gameOverScreen">
+      <h1>Game Over!</h1>
+      <!-- Leaderboard header above all -->
+      <h2 id="leaderboardTitle">Leaderboard</h2>
+      <div id="leaderboard"></div>
+      <button id="restartBtn">Restart</button>
+    </div>
+    <button id="leftbtn"> Left</button>
+    <button id="rightbtn"> Right</button>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

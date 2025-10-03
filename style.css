@@ -1,0 +1,252 @@
+/* ================= Body & Base ================= */
+body {
+  background: linear-gradient(to bottom, #1a1a2e, #16213e);
+  font-family: 'Orbitron', 'Segoe UI', Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: #f1f1f1;
+}
+
+/*===========Game Title=======*/
+.game-title {
+  font-size: 36px; /* slightly smaller than before */
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 15px;
+
+  /* Gradient text for WebKit browsers */
+  background: linear-gradient(45deg, #00fff0, #00c2ff, #ff00ff, #ff1493);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Fallback for Firefox */
+  color: #00fff0;
+
+  /* Glowing 3D effect */
+  text-shadow:
+     0 2px 0 #000,
+     0 4px 0 rgba(0,0,0,0.15),
+     0 6px 0 rgba(0,0,0,0.15),
+     0 0 5px #00fff0,
+     0 0 10px #00c2ff,
+     0 0 20px #ff00ff,
+     0 0 30px #ff1493;
+
+  /* Animation for gradient movement */
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* ================= Heading ================= */
+h1 {
+  color: #00ffcc;
+  text-align: center;
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #008080;
+  margin-top: 20px;
+}
+
+/* ================= Game Display ================= */
+#gameDisplay {
+  display: none;
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  border: 3px solid #00ffcc;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
+  width: 500px;
+  height: 650px;
+  margin: 20px auto;
+  position: relative;
+}
+
+/* ================= Canvas ================= */
+#gameBoard {
+  border: 4px solid #0a3a4b; /* dark stylish border */
+  border-radius: 15px;
+  margin: 15px;
+  width: 450px;
+  height: 500px;
+
+  /* Subtle gradient background */
+  background: radial-gradient(circle at center, #1e3a4a, #0b1f2b);
+  
+  /* Inner shadow for depth */
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.6),  /* inner depth */
+              0 0 15px rgba(0,255,204,0.3);   /* faint outer glow */
+  
+  transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+
+/* ================= Buttons ================= */
+button {
+  width: 110px;
+  height: 80px;
+  margin: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0, 255, 204, 0.2);
+  border: 2px solid #00ffcc;
+  border-radius: 12px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 0 15px rgba(0,255,204,0.7), 0 0 30px rgba(0,255,204,0.4) inset;
+}
+
+button:hover {
+  background: rgba(0, 255, 204, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0,255,204,0.9), 0 0 50px rgba(0,255,204,0.5) inset;
+}
+
+button:active {
+  transform: scale(0.95);
+  background: rgba(0, 200, 180, 0.5);
+}
+
+/* ================= Left & Right ================= */
+#leftbtn { float: left; }
+#rightbtn { float: right; }
+
+/* ================= Game Over Screen ================= */
+#gameOverScreen {
+  display: none;
+  position: absolute;
+  top: 20px;
+  width: 500px;
+  height: 450px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  text-align: center;
+  padding-top: 20px; /* moved text up */
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 0, 100, 0.7);
+}
+
+#gameOverScreen h1 {
+  font-size: 64px;
+  margin-bottom: 20px;
+  color: #ff4d94;
+  text-shadow: 0 0 20px #ff4d94, 0 0 40px #f60b69, 0 0 60px #ff66aa;
+}
+
+#gameOverScreen button {
+  width: 150px;
+  height: 60px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: radial-gradient(circle, #ff4da6, #ff0066);
+  border: none;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 0, 100, 0.8);
+}
+
+#gameOverScreen button:hover {
+  background: radial-gradient(circle, #ff66b3, #ff3399);
+  box-shadow: 0 0 25px rgba(255, 0, 100, 0.9);
+}
+
+/* ================= Start Screen ================= */
+#startScreen {
+  text-align: center;
+  margin-top: 80px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,255,204,0.5);
+  backdrop-filter: blur(6px);
+}
+
+#startScreen input, #startScreen button {
+  margin: 10px;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #00ffcc;
+  outline: none;
+  background: rgba(0, 255, 204, 0.1);
+  color: white;
+}
+
+#startScreen button {
+  background: linear-gradient(to right, #00ffcc, #008080);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,255,204,0.7);
+}
+
+#startScreen button:hover {
+  background: linear-gradient(to right, #00e6b8, #00cccc);
+  transform: scale(1.05);
+}
+
+/* ================= Leaderboard ================= */
+#leaderboardTitle {
+    font-size: 32px;
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Leaderboard container */
+#leaderboard {
+    padding: 10px;
+    background: rgba(0, 255, 204, 0.08);
+    border: 2px solid #00ffcc;
+    border-radius: 10px;
+    max-height: 280px;
+    overflow-y: auto;
+    box-shadow: 0 0 12px rgba(0,255,204,0.3);
+}
+
+/* Header tile */
+.leaderboard-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-weight: bold;
+    background: rgba(0, 255, 204, 0.2);
+    border-radius: 6px;
+    margin-bottom: 5px;
+    color: #00ffcc;
+    text-shadow: 0 0 5px #00ffcc;
+}
+
+/* Player row tile */
+.leaderboard-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background: rgba(0, 255, 204, 0.1);
+    color: #f1f1f1;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.leaderboard-row:hover {
+    background: rgba(0, 255, 204, 0.25);
+    transform: scale(1.02);
+}
+
+/* Columns alignment */
+.rank { width: 50px; text-align: left; }
+.name { flex: 1; text-align: left; padding-left: 5px; }
+.score { width: 60px; text-align: right; }
