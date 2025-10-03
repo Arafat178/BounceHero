@@ -108,11 +108,23 @@ leftButton.addEventListener("mousedown", () => movingLeft = true);
 leftButton.addEventListener("mouseup", () => movingLeft = false);
 leftButton.addEventListener("mouseleave", () => movingLeft = false); 
 
+// Mobile
+leftButton.addEventListener("touchstart", (e) => { e.preventDefault(); movingLeft = true; });
+leftButton.addEventListener("touchend", () => movingLeft = false);
+
 rightButton.addEventListener("mousedown", () => movingRight = true);
 rightButton.addEventListener("mouseup", () => movingRight = false);
 rightButton.addEventListener("mouseleave", () => movingRight = false);
 
+rightButton.addEventListener("touchstart", (e) => { e.preventDefault(); movingRight = true; });
+rightButton.addEventListener("touchend", () => movingRight = false);
+
+// global mouse/touch release (safety)
+document.addEventListener("mouseup", () => { movingLeft = false; movingRight = false; });
+document.addEventListener("touchend", () => { movingLeft = false; movingRight = false; });
+
 restartBtn.addEventListener("click", restartGame); // restart game
+
 
 //saving score in database and leaderboard
 // Save player score after game over
@@ -276,3 +288,4 @@ startBtn.addEventListener("click", () => {
         gameLoop();
     }
 });
+
