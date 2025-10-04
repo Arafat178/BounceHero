@@ -103,6 +103,35 @@ function updateBar(){
     }
 }
 
+//coments acording to hit the ball
+const comments = [
+  "Awesome!", "Fantastic!", "Superb!", "Amazing shot!", "Incredible!",
+  "Nice bounce!", "Perfect timing!", "Good one!", "Epic move!",
+  "What a hit!", "Clean contact!", "You’re on fire!", "Beautiful strike!",
+  "Smash that ball!", "Sweet touch!", "Bounce master!", "Unstoppable!",
+  "Killer reflex!", "Flawless!", "Insane shot!", "Bang on!", "Pure skill!",
+  "That’s style!", "Solid hit!", "Unbelievable!", "Bravo!", "Legendary move!",
+  "Precision bounce!", "Power play!", "Champion move!", "Slick rebound!",
+  "Unreal!", "Electric shot!", "Pro-level bounce!", "Monster hit!",
+  "Reflex king!", "Lightning hands!", "That was wild!", "Perfect bounce!",
+  "Clutch save!", "Pure talent!", "You nailed it!", "Momentum rising!",
+  "No mercy!", "High voltage!", "Bounce hero!", "Supreme timing!",
+  "Perfect reflex!", "You’re glowing!", "Neo-speed!", "Robot reflex!"
+];
+
+function showComment() {
+    const commentDiv = document.getElementById("gameComment");
+    const randomComment = comments[Math.floor(Math.random() * comments.length)];
+    commentDiv.textContent = randomComment;
+    commentDiv.style.opacity = 1;
+
+    // ১ সেকেন্ড পরে comment fade হয়ে যাবে
+    setTimeout(() => {
+        commentDiv.style.opacity = 0;
+    }, 1000);
+}
+
+
 // button press events
 leftButton.addEventListener("mousedown", () => movingLeft = true);
 leftButton.addEventListener("mouseup", () => movingLeft = false);
@@ -179,7 +208,7 @@ function showLeaderboard() {
 
 
 
-// update ball position and bounce
+// update ball position and bounce and collision
 function updateVariable() {
     ball.x += ball.vx;
     ball.y += ball.vy;
@@ -199,20 +228,21 @@ function updateVariable() {
     ball.vy = -ball.vy;
     score++;
     playBounceMusic();
+    showComment();
 
     // প্রতি score এ speed 0.1 করে বাড়বে
     if (ball.vx > 0) {
-        ball.vx += 0.4;
+        ball.vx += 0.3;
     } else {
-        ball.vx -= 0.4;
+        ball.vx -= 0.3;
     }
 
     if (ball.vy > 0) {
-        ball.vy += 0.3;
+        ball.vy += 0.2;
     } else {
-        ball.vy -= 0.3;
+        ball.vy -= 0.2;
     }
-    } //ball and bar collision
+    } //ball and bar collision check
 
 
     // Ball dropped → Game Over
@@ -222,7 +252,7 @@ function updateVariable() {
         playGameOver();
         submitScore(playerName, score);
     }
-}
+} //ball bar update
 
 //score display
 function drawScore(){
@@ -288,4 +318,5 @@ startBtn.addEventListener("click", () => {
         gameLoop();
     }
 });
+
 
