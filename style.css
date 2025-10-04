@@ -251,18 +251,24 @@ button:active {
 .name { flex: 1; text-align: left; padding-left: 5px; }
 .score { width: 60px; text-align: right; }
 /*=====comments====*/
+#gameDisplay {
+  position: relative;
+}
+
 .comment {
   position: absolute;
-  top: 50px;
+  top: 45%;  /* vertically roughly center */
   left: 50%;
-  transform: translateX(-50%);
-  font-size: 28px;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
   font-weight: bold;
   color: #00ffff;
-  text-shadow: 0 0 15px #00ffff, 0 0 30px #0088ff;
+  text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
 }
+
+
 
 
