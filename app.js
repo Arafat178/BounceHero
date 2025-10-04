@@ -61,7 +61,7 @@ function ballXY(x, y) {
 }
 
 // bar object
-let bar = {x: 30,y:450,width:60,height:10,speed:4};
+let bar = {x: 30,y:450,width:60,height:10,speed:6};
 
 // draw bar
 function barXY(x, y, w, h){
@@ -232,15 +232,15 @@ function updateVariable() {
 
     // প্রতি score এ speed 0.1 করে বাড়বে
     if (ball.vx > 0) {
-        ball.vx += 0.3;
+        ball.vx += 0.2;
     } else {
-        ball.vx -= 0.3;
+        ball.vx -= 0.2;
     }
 
     if (ball.vy > 0) {
-        ball.vy += 0.2;
+        ball.vy += 0.1;
     } else {
-        ball.vy -= 0.2;
+        ball.vy -= 0.1;
     }
     } //ball and bar collision check
 
@@ -318,5 +318,6 @@ startBtn.addEventListener("click", () => {
         gameLoop();
     }
 });
+
 
 
